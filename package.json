@@ -1,0 +1,23 @@
+{
+  "name": "web-chat-app",
+  "version": "1.0.0",
+  "description": "Web Chat Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthewDodi/web-chat-app.git"
+  },
+  "author": "Matthew Dodi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthewDodi/web-chat-app/issues"
+  },
+  "homepage": "https://github.com/MatthewDodi/web-chat-app#readme",
+  "dependencies": {
+    "socket.io": "*",
+    "express": "*"
+  }
+}
