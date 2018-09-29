@@ -9,17 +9,35 @@
 </head>
 <body>
     <div class="wrapper">
-        <h1>Test</h1>
         <ul id="messages"></ul>
-        <form action="">
-            <input id="message" autocomplete="off" /><button>Send</button>
+        <br />
+        <form id="messageForm" >
+            <input id="message" autocomplete="off" /><button id="submit" type="submit">Send</button>
         </form>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
+      const messages = document.getElementById('messages');
+      const message = document.getElementById('message');
+      const messageForm = document.getElementById('messageForm');
+      messageForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          socket.emit('send message', message.value);
+          message.value = '';
+      });
+    
+      socket.on('new message', (data) => {
+          console.log('starting new message');
+        const node = document.createElement('LI');
+        const textNode = document.createTextNode(data.msg);
 
-    </script>   
+        console.log(textNode);
+        node.appendChild(textNode);
+        messages.appendChild(node);
+      })
+
+    </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ var io = require('socket.io')(http);
 var users = [];
 var connections = [];
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/');
@@ -23,6 +23,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('send message', (data) => {
+      console.log(data);
       io.sockets.emit('new message', {msg: data});
   } )
 });
