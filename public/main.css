@@ -26,12 +26,25 @@ body {
 .userInfo {
     background-color: #64DC72;
     box-shadow: 0 2px 6px rgba(0,0,0,.35);
+    border-radius: 0 0 15px 15px;
+    max-height: 3.5rem;
+    transition: all .18s ease-out;
+}
+
+.userInfo:hover {
+    max-height: 100px;
+    box-shadow: 0 4px 6px rgba(0,0,0,.38)
+}
+
+h1 {
+    position: fixed;
 }
 
 #messageForm {
     display: grid;
     grid-template-columns: 9.5fr .5fr;
     align-content: center;
+    margin: 1rem;
 }
 
 #messages {
