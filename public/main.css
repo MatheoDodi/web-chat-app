@@ -1,9 +1,77 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: Helvetica, sans-serif;
+}
 
+body {
+    height: 100vh;
+    font-size: 18px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.chatBox {
+    display: grid;
+    grid-template-rows: 1fr 7fr .5fr;
+    height: 100vh;
+    background: #ECF0F1;
+
+}
+
+.userInfo {
+    background-color: #64DC72;
+    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+}
+
+#messageForm {
+    display: grid;
+    grid-template-columns: 9.5fr .5fr;
+    align-content: center;
+}
+
+#messages {
+    display: grid;
+    height: min-content;
+    list-style: none;
+}
+
+#messages li {
+    background: #64DC72;
+    margin: 1rem;
+    width: fit-content;
+    max-width: 48%;
+    height: min-content;
+    padding: .5rem;
+    border-radius: 20px 20px 20px 0;
+}
+
+#messages li:nth-child(odd) {
+    background: white;
+    justify-self: end;
+    border-radius: 20px 20px 0 20px;
+}
+
+#message {
+    font-size: inherit;
+    height: 80px;
+    padding: .5rem;
+    margin: .5rem;
+    resize: none;
+    border-radius: 10px;
+    border-color: none;
+}
+
+#submit {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}

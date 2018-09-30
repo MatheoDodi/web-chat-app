@@ -6,14 +6,20 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/main.css" media="screen"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
-    <div class="wrapper">
-        <ul id="messages"></ul>
-        <br />
-        <form id="messageForm" >
-            <input id="message" autocomplete="off" /><button id="submit" type="submit">Send</button>
-        </form>
+    <div class="layout">
+        <div class="chatInfo"></div>
+        <div class="chatBox">
+            <div class="userInfo">
+                <h1>User</h1>
+            </div>
+            <ul id="messages"></ul>
+            <form id="messageForm" >
+                <textarea placeholder="Type something here to send!" id="message" autocomplete="off"></textarea><button id="submit" type="submit"><i class="fas fa-paper-plane fa-2x"></i></button>
+            </form>
+        </div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -22,14 +28,22 @@
       const messages = document.getElementById('messages');
       const message = document.getElementById('message');
       const messageForm = document.getElementById('messageForm');
+      messageForm.addEventListener('keyup', e => {
+          e.preventDefault();
+          if (e.keyCode === 13 && message.value.trim().length > 1) {
+            socket.emit('send message', message.value);
+            message.value = '';
+          }
+      })
       messageForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          socket.emit('send message', message.value);
-          message.value = '';
+            if (message.value) {
+              socket.emit('send message', message.value);
+              message.value = '';
+            }
       });
     
       socket.on('new message', (data) => {
-          console.log('starting new message');
         const node = document.createElement('LI');
         const textNode = document.createTextNode(data.msg);
 
