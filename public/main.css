@@ -24,20 +24,20 @@ body {
 }
 
 .userInfo {
+    padding: .85rem;
+    display: flex;
+    align-items: flex-end;
     background-color: #64DC72;
-    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+    box-shadow: 0 1px 3px rgba(0,0,0,.35);
     border-radius: 0 0 15px 15px;
-    max-height: 3.5rem;
+    height: 120px;
     transition: all .18s ease-out;
+    transform: translateY(-60px);
 }
 
 .userInfo:hover {
-    max-height: 100px;
-    box-shadow: 0 4px 6px rgba(0,0,0,.38)
-}
-
-h1 {
-    position: fixed;
+    box-shadow: 0 4px 6px rgba(0,0,0,.38);
+    transform: translateY(0);
 }
 
 #messageForm {
